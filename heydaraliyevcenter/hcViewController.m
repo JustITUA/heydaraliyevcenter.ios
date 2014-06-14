@@ -26,4 +26,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)networkTestPressed:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[hcAPIClient sharedClient] testWithCompletion:^(BOOL success, NSString * message) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (success) {
+            UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"" message:@"Готово" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [errorView show];
+        }
+        else
+        {
+            UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"" message:NSLocalizedString(message, nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [errorView show];
+        }
+    }];
+    
+}
+
+
 @end

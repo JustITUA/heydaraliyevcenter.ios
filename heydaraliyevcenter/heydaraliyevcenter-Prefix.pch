@@ -11,6 +11,13 @@
 #endif
 
 #ifdef __OBJC__
+    #import <SystemConfiguration/SystemConfiguration.h>
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "hcAPIClient.h"
+    #import <MBProgressHUD.h>
 #endif
+
+#define DeviceScreenHeight UIScreen.mainScreen.bounds.size.height
+#define DeviceScreenWidth UIScreen.mainScreen.bounds.size.width
+#define kKeychainServiceName [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]
