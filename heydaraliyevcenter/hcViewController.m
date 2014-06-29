@@ -33,7 +33,7 @@
     [[hcAPIClient sharedClient] testWithCompletion:^(BOOL success, NSString * message) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (success) {
-            UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"" message:@"Готово" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *errorView = [[UIAlertView alloc] initWithTitle:@"" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [errorView show];
         }
         else

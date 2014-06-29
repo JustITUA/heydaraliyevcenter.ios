@@ -10,8 +10,10 @@ static NSString * const SERVER_DEV = @"http://localhost/heydaraliyevcenter/heyda
 static NSString * const SERVER_PROD = @"https://api.mbank.ru";
 
 static NSString * const kClientSecret = @"";
+static NSString * const kClientID = @"";
 
 static NSString * const kTestPath = @"/test";
+
 static NSString* hcAPIBaseURLString;
 
 @implementation hcAPIClient
@@ -89,7 +91,7 @@ static NSString* hcAPIBaseURLString;
 {
     NSMutableURLRequest* request = [self requestWithMethod:@"GET" path:[NSString stringWithFormat:@"%@%@", hcAPIBaseURLString,kTestPath] parameters:nil];
     hcJSONRequestOperation* operation = [hcJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        completion(YES, nil);
+        completion(YES, JSON[@"message"]);
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         completion(NO, JSON[@"error"][@"message"]);
     }];
@@ -97,8 +99,6 @@ static NSString* hcAPIBaseURLString;
     operation.JSONReadingOptions = NSJSONReadingAllowFragments;
     [operation start];
 }
-
-
 
 
 
